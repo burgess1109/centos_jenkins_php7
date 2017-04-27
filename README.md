@@ -29,6 +29,8 @@
 * /var/jenkins_home : included jenkins config , log and lib
 
 
+---
+
 
 ## Centos7最新版本,基本套件及SSH Server
 
