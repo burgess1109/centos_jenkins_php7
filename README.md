@@ -55,7 +55,7 @@
 
 2. 使用 Kitematic :
 
-* 搜尋 burgess/centos_jenkins_php7 後 CREATE
+* 搜尋 burgess/centos_jenkins_php7 之後 CREATE
 
 
 ## Volumes
