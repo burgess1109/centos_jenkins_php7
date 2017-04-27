@@ -31,8 +31,10 @@ RUN source /etc/profile
 ARG JENKINS_VERSION
 
 RUN yum -y install git curl curl-devel
-RUN wget -c http://mirrors.jenkins-ci.org/redhat/jenkins-${JENKINS_VERSION:-2.57}-1.1.noarch.rpm
-RUN rpm -ivh jenkins-${JENKINS_VERSION:-2.57}-1.1.noarch.rpm
+#RUN wget -c http://mirrors.jenkins-ci.org/redhat/jenkins-${JENKINS_VERSION:-2.57}-1.1.noarch.rpm
+RUN wget -c https://pkg.jenkins.io/redhat-stable/jenkins-${JENKINS_VERSION:-2.46.2}-1.1.noarch.rpm
+
+RUN rpm -ivh jenkins-${JENKINS_VERSION:-2.46.2}-1.1.noarch.rpm
 
 #install php 7.1
 RUN yum -y install yum-utils
@@ -40,7 +42,7 @@ RUN wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 RUN wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -Uvh epel-release-latest-7.noarch.rpm
 RUN rpm -Uvh remi-release-7.rpm
-RUN yum-config-manager –enable remi-php71
+RUN sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/remi-php71.repo
 
 RUN yum -y install php php-fpm php-mbstring php-xml php-mysql php-pdo php-gd php-pecl-imagick php-opcache php-pecl-memcache php-pecl-xdebug php-ldap php-odbc php-pear php-xmlrpc php-snmp php-soap php-mcrypt
 
@@ -56,6 +58,9 @@ RUN ln -s /etc/sysconfig/jenkins /var/jenkins_home/sysconfig/jenkins
 
 RUN mkdir -p /var/jenkins_home/logs
 RUN ln -s /var/log/jenkins/ /var/jenkins_home/logs
+
+RUN mkdir -p /var/jenkins_home/lib
+RUN ln -s /var/lib/jenkins/ /var/jenkins_home/lib
 
 #ssh
 EXPOSE 22
@@ -75,12 +80,12 @@ RUN dos2unix /init-bashrc.sh
 RUN /usr/sbin/sshd-keygen -A
 
 
-# Create Base Enter Cont Command
+#Create Base Enter Cont Command
 RUN chmod 755 /init-bashrc.sh && echo "/init-bashrc.sh" >> /root/.bashrc && \
     echo 'export PATH="/root/.composer/vendor/bin:$PATH"' >> /root/.bashrc
 
 
-# Start run shell
+#Start run shell
 CMD ["bash"]
 
 
