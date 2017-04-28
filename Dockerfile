@@ -51,16 +51,9 @@ RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
-
-#set soft link of jenkins_home
-RUN mkdir -p /var/jenkins_home/sysconfig
-RUN ln -s /etc/sysconfig/jenkins /var/jenkins_home/sysconfig/jenkins
-
-RUN mkdir -p /var/jenkins_home/logs
-RUN ln -s /var/log/jenkins/ /var/jenkins_home/logs
-
-RUN mkdir -p /var/jenkins_home/lib
-RUN ln -s /var/lib/jenkins/ /var/jenkins_home/lib
+#set /var/jenkins_home
+RUN mkdir -p /var/jenkins_home
+RUN chmod 755 -R /var/jenkins_home
 
 #ssh
 EXPOSE 22

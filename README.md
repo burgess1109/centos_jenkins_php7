@@ -26,7 +26,11 @@
 
 ## Volumes
 
-* /var/jenkins_home : included jenkins config , log and lib
+* /var/jenkins_home/log : copy from inside the container directory '/var/log/jenkins/' when you enter or restart the container
+
+* /var/jenkins_home/sysconfig/jenkins : jenkins config, you can modify it. '/etc/sysconfig/jenkins' would be replaced with '/var/jenkins_home/sysconfig/jenkins' when you enter or restart the container
+
+* /var/jenkins_home/lib : copy from inside the container directory '/var/lib/jenkins/' when you enter or restart the container
 
 
 ---
@@ -60,7 +64,11 @@
 
 ## Volumes
 
-* /var/jenkins_home : 包含 jenkins config , log and lib
+* /var/jenkins_home/log : 每當進入或重啟容器時, 將會複製容器內 /var/log/jenkins/ 目錄下的檔案
+
+* /var/jenkins_home/sysconfig/jenkins : jenkins設定檔, 您可以修改它. 每當你進入或重啟容器時, /var/jenkins_home/sysconfig/jenkins 將取代容器內的 /etc/sysconfig/jenkins
+
+* /var/jenkins_home/lib : 每當進入或重啟容器時, 將會複製容器內 /var/lib/jenkins/ 目錄下的檔案
 
 
 
