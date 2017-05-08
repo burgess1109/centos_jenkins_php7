@@ -30,7 +30,7 @@ RUN source /etc/profile
 #install Jenkins (rpm from http://mirrors.jenkins-ci.org/redhat/)
 ARG JENKINS_VERSION
 
-RUN yum -y install git curl curl-devel
+RUN yum -y install git curl curl-devel ant
 #RUN wget -c http://mirrors.jenkins-ci.org/redhat/jenkins-${JENKINS_VERSION:-2.57}-1.1.noarch.rpm
 RUN wget -c https://pkg.jenkins.io/redhat-stable/jenkins-${JENKINS_VERSION:-2.46.2}-1.1.noarch.rpm
 
@@ -46,10 +46,40 @@ RUN sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/remi-php71.repo
 
 RUN yum -y install php php-fpm php-mbstring php-xml php-mysql php-pdo php-gd php-pecl-imagick php-opcache php-pecl-memcache php-pecl-xdebug php-ldap php-odbc php-pear php-xmlrpc php-snmp php-soap php-mcrypt
 
-#PHPUnit
+#PHPUnit (unit-test)
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
+
+#PHP_CodeSniffer (檢查PHP程式碼是否符合Coding standard)
+RUN wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+RUN chmod +x phpcs.phar
+RUN mv phpcs.phar /usr/local/bin/phpcs
+
+#phploc (計算project的size)
+RUN wget https://phar.phpunit.de/phploc.phar
+RUN chmod +x phploc.phar
+RUN mv phploc.phar /usr/local/bin/phploc
+
+#pdepend (檢驗PHP程式碼的邏輯複雜性)
+RUN wget http://static.pdepend.org/php/latest/pdepend.phar
+RUN chmod +x pdepend.phar
+RUN mv pdepend.phar /usr/local/bin/pdepend
+
+#phpmd (檢查PHP程式碼中可能的bug)
+RUN wget -c http://static.phpmd.org/php/latest/phpmd.phar
+RUN chmod +x phpmd.phar
+RUN mv phpmd.phar /usr/local/bin/phpmd
+
+#phpcpd (檢查copy/paste的程式碼)
+RUN wget https://phar.phpunit.de/phpcpd.phar
+RUN chmod +x phpcpd.phar
+RUN mv phpcpd.phar /usr/local/bin/phpcpd
+
+#phpdox (生成API的文件)
+RUN wget https://github.com/theseer/phpdox/releases/download/0.9.0/phpdox-0.9.0.phar
+RUN chmod +x phpdox-0.9.0.phar
+RUN mv phpdox-0.9.0.phar /usr/local/bin/phpdox
 
 #set /var/jenkins_home
 RUN mkdir -p /var/jenkins_home

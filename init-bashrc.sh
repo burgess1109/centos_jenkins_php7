@@ -23,10 +23,10 @@ chmod 755 -R /var/jenkins_home
 
 if [ -f "/var/jenkins_home/sysconfig/jenkins" ]; then
 	# Copy local jenkins config to docker
-	cp -rf /var/jenkins_home/sysconfig/jenkins /etc/sysconfig/jenkins
+	yes | cp -rf /var/jenkins_home/sysconfig/jenkins /etc/sysconfig/jenkins
 else
 	# Copy docker jenkins config to local
-	cp -rf /etc/sysconfig/jenkins /var/jenkins_home/sysconfig/jenkins 
+	yes | cp -rf /etc/sysconfig/jenkins /var/jenkins_home/sysconfig/jenkins 
 fi
 
 # start server
@@ -37,5 +37,5 @@ fi
 /etc/init.d/jenkins start
 	 
 # Cpoy docker jenkins log & lib to local
-cp -rf /var/log/jenkins/* /var/jenkins_home/log/
-cp -rf /var/lib/jenkins/* /var/jenkins_home/lib/
+yes | cp -rf /var/log/jenkins/* /var/jenkins_home/log/
+yes | cp -rf /var/lib/jenkins/* /var/jenkins_home/lib/

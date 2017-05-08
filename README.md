@@ -1,6 +1,6 @@
 ## The latest Centos 7 & SSH Server & Jenkins & PHP & PHPUnit
 
-* Common packages : dos2unix,net-tools,vixie-cron,crontabs,telnet,screen,wget,unzip,tar,passwd,vim,git,curl
+* Common packages : dos2unix,net-tools,vixie-cron,crontabs,telnet,screen,wget,unzip,tar,passwd,vim,git,curl,ant
 * openssh-server
 * java-1.8.0-openjdk
 * Jenkins 2.46.2
@@ -38,7 +38,7 @@
 
 ## Centos7最新版本,基本套件及SSH Server & Jenkins & PHP & PHPUnit
 
-* 常用基本套件 : dos2unix,net-tools,vixie-cron,crontabs,telnet,screen,wget,unzip,tar,passwd,vim,git,curl
+* 常用基本套件 : dos2unix,net-tools,vixie-cron,crontabs,telnet,screen,wget,unzip,tar,passwd,vim,git,curl,ant
 * openssh-server
 * java-1.8.0-openjdk
 * Jenkins 2.46.2
