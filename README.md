@@ -1,4 +1,4 @@
-## The latest Centos 7 & SSH Server & Jenkins & PHP & PHPUnit
+## The latest Centos 7 & SSH Server & Jenkins & PHP & PHPUnit for Docker
 
 * Common packages : dos2unix,net-tools,vixie-cron,crontabs,telnet,screen,wget,unzip,tar,passwd,vim,git,curl,ant
 * openssh-server
